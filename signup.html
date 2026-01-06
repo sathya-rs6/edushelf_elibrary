@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - EduShelf</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #c72222;
+      --secondary-color: #3498db;
+      --dark-color: #2c3e50;
+      --light-color: #f5f5f5;
+      --success-color: #2ecc71;
+      --warning-color: #f39c12;
+      --danger-color: #e74c3c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--light-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .signup-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .btn-google {
+  background: #fff;
+  color: #444;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+.btn-google:hover {
+  background: #eee;
+}
+.btn-google i {
+  color: #db4437;
+}
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--dark-color);
+      font-size: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #34495e;
+      font-weight: 500;
+    }
+
+    .input-with-icon {
+      position: relative;
+    }
+
+    .input-with-icon i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #7f8c8d;
+    }
+
+    .input-with-icon input {
+      width: 100%;
+      padding: 12px;
+      padding-left: 40px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .input-with-icon input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+    }
+
+    .btn {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 6px;
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+    }
+
+    .btn-primary:hover {
+      background-color: #a51c1c;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #7f8c8d;
+    }
+
+    .login-link a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #f8f8f8;
+      color: #7f8c8d;
+      border-top: 1px solid #eee;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+      }
+      nav ul {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <i class="fas fa-book-open"></i> EduShelf
+  </a>
+  <nav>
+    <ul>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="progress.html">Progress</a></li>
+      <li><a href="todolist.html">To-Do List</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><a href="profile.html">Profile</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+<main class="main-content">
+  <div class="signup-container">
+    <h1><i class="fas fa-user-plus"></i> Create an Account</h1>
+    <form id="signup-form">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <div class="input-with-icon">
+          <i class="fas fa-user"></i>
+          <input type="text" id="name" name="name" required placeholder="John Doe" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-with-icon">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="email" name="email" required placeholder="john@example.com" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-with-icon">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" name="password" required placeholder="••••••••" />
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+    <div class="login-link">
+      Already have an account? <a href="login.html">Log in</a>
+    </div>
+  </div>
+</main>
+
+<button type="button" id="google-signup-btn" class="btn btn-google">
+  <i class="fab fa-google"></i> Sign up with Google
+</button>
+
+
+<footer>
+  <p>&copy; 2023 EduShelf. All rights reserved.</p>
+</footer>
+
+<!-- Firebase SDK scripts (compat for direct HTML use) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script>
+  // ✅ Your actual Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyCSV8PasnXo_qF2Rogy8V9gjxFJtk69NKw",
+    authDomain: "api-edushelf.firebaseapp.com",
+    projectId: "api-edushelf",
+    storageBucket: "api-edushelf.firebasestorage.app",
+    messagingSenderId: "40944365050",
+    appId: "1:40944365050:web:9daceb1696d7067c080843",
+    measurementId: "G-L1YDNC0P9J"
+  };
+  // Correct way for HTML+CDN:           vvvvvvvvvvvvvvvvvvvvv
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // "Sign up with Email" handler
+    const signupForm = document.getElementById('signup-form');
+    if (signupForm) {
+      signupForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        try {
+          // Firebase email signup
+          const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+          await userCredential.user.updateProfile({ displayName: name });
+          const idToken = await userCredential.user.getIdToken();
+          const res = await fetch("http://127.0.0.1:5000/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password, idToken })
+          });
+          const data = await res.json();
+          if (data.success) {
+            alert("Account created successfully! You can now log in.");
+            window.location.href = "login.html";
+          } else {
+            alert("Error creating account: " + (data.error || "Unknown error"));
+          }
+        } catch (error) {
+          alert("Signup failed: " + error.message);
+        }
+      });
+    }
+
+    // GOOGLE Signup handler
+    const googleBtn = document.getElementById('google-signup-btn');
+    if (googleBtn) {
+      googleBtn.addEventListener('click', async function() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        try {
+          const result = await firebase.auth().signInWithPopup(provider);
+          const user = result.user;
+          const idToken = await user.getIdToken();
+          // Optionally send to your Flask backend:
+          const res = await fetch("http://127.0.0.1:5000/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: user.displayName || "",
+              email: user.email,
+              idToken
+            })
+          });
+          const data = await res.json();
+          if (data.success) {
+            alert("Signed up with Google successfully!");
+            window.location.href = "profile.html";
+          } else {
+            alert("Backend error: " + (data.error || "Unknown error"));
+          }
+        } catch (error) {
+          alert("Google signup failed: " + error.message);
+        }
+      });
+    }
+  });
+</script>
+
+
+</body>
+</html>

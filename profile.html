@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile - EduShelf</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    :root {
+      --primary-color: #c72222;
+      --light-color: #f5f5f5;
+      --input-focus: #fad2d2;
+      --text-color: #27314c;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: var(--light-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      max-width: 480px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.8rem;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+    }
+    .profile-pic-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1rem;
+      border-radius: 50%;
+      border: 4px solid var(--primary-color);
+      width: 130px;
+      height: 130px;
+      overflow: hidden;
+      background: #eee;
+      cursor: pointer;
+    }
+    #profile-pic {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+    .camera-icon {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      background-color: var(--primary-color);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+    .profile-pic-wrap:hover .camera-icon {
+      opacity: 1;
+    }
+    .profile-info {
+      font-size: 1.1rem;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 0;
+      text-align: left;
+    }
+    .profile-info div {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.4rem;
+    }
+    .profile-info div span.label {
+      font-weight: 600;
+      color: var(--primary-color);
+      min-width: 110px;
+      display: inline-block;
+    }
+    .info-value[contenteditable="true"] {
+      border-bottom: 1px dotted var(--primary-color);
+      outline: none;
+      min-width: 100px;
+      padding-left: 4px;
+      background: var(--input-focus);
+      border-radius: 3px;
+      transition: background 0.2s;
+      cursor: text;
+    }
+    .streak-box {
+      margin-top: 1.25rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2ecc71;
+    }
+    .logout-btn, .edit-btn {
+      margin-top: 2rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .logout-btn:hover, .edit-btn:hover {
+      background-color: #a51c1c;
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+      }
+      nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      main {
+        margin: 1rem;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">
+    <i class="fas fa-book-open"></i> EduShelf
+  </a>
+  <nav>
+    <ul>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="progress.html">Progress</a></li>
+      <li><a href="todolist.html">To-Do List</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><a href="profile.html" aria-current="page">Profile</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h1><i class="fas fa-user"></i> Your Profile</h1>
+
+  <label for="profile-upload" class="profile-pic-wrap" title="Change Profile Picture">
+    <img src="" alt="Profile Picture" id="profile-pic" />
+    <div class="camera-icon"><i class="fas fa-camera"></i></div>
+  </label>
+  <input type="file" id="profile-upload" accept="image/*" style="display:none"/>
+
+  <div class="profile-info">
+    <div><span class="label">Full Name:</span> <span id="user-name" contenteditable="false"></span></div>
+    <div><span class="label">Email:</span> <span id="user-email"></span></div>
+    <div><span class="label">User ID:</span> <span id="user-uid"></span></div>
+    <div><span class="label">Membership Status:</span> <span id="membership-status">Standard</span></div>
+    <div><span class="label">Joined On:</span> <span id="joined-on">-</span></div>
+  </div>
+
+  <button class="edit-btn" id="edit-btn">Edit Profile</button>
+  <button class="logout-btn" id="logout-btn">Logout</button>
+  <div class="streak-box" id="profile-streak">Profile Visit Streak: 0 days 🔥</div>
+</main>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCSV8PasnXo_qF2Rogy8V9gjxFJtk69NKw",
+    authDomain: "api-edushelf.firebaseapp.com",
+    projectId: "api-edushelf",
+    storageBucket: "api-edushelf.appspot.com",
+    messagingSenderId: "40944365050",
+    appId: "1:40944365050:web:9daceb1696d7067c080843",
+    measurementId: "G-L1YDNC0P9J"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const storage = firebase.storage();
+
+  const profilePic = document.getElementById('profile-pic');
+  const profileUpload = document.getElementById('profile-upload');
+  const userNameSpan = document.getElementById('user-name');
+  const userEmailSpan = document.getElementById('user-email');
+  const userUidSpan = document.getElementById('user-uid');
+  const membershipStatusSpan = document.getElementById('membership-status');
+  const joinedOnSpan = document.getElementById('joined-on');
+  const profileStreak = document.getElementById('profile-streak');
+  const editBtn = document.getElementById('edit-btn');
+  const logoutBtn = document.getElementById('logout-btn');
+
+  let currentUser = null;
+  let editing = false;
+
+  firebase.auth().onAuthStateChanged(async user => {
+    if (user) {
+      currentUser = user;
+      userNameSpan.textContent = user.displayName || "User";
+      userEmailSpan.textContent = user.email;
+      userUidSpan.textContent = user.uid;
+      membershipStatusSpan.textContent = "Standard";
+      joinedOnSpan.textContent = user.metadata?.creationTime ? new Date(user.metadata.creationTime).toLocaleDateString() : "-";
+
+      profilePic.src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'User')}&background=c72222&color=fff&size=130`;
+
+      updateVisitStreak();
+    } else {
+      window.location.href = "login.html";
+    }
+  });
+
+  // UPDATED PHOTO UPLOAD HANDLER
+  profileUpload.addEventListener('change', async e => {
+    const file = e.target.files[0];
+    if (file && currentUser) {
+      try {
+        const ref = storage.ref().child(`profiles/${currentUser.uid}/profile.jpg`);
+        await ref.put(file);
+        const url = await ref.getDownloadURL();
+        await currentUser.updateProfile({ photoURL: url });
+        await currentUser.reload();
+        // Add "?v=" + Date.now() to ensure you get the fresh image, not a cached one
+        profilePic.src = firebase.auth().currentUser.photoURL + "?v=" + Date.now();
+        alert("Profile picture updated!");
+      } catch (error) {
+        alert("Error uploading profile picture: " + error.message);
+      }
+    }
+  });
+
+  profilePic.parentElement.addEventListener('click', () => {
+    if (!editing) profileUpload.click();
+  });
+
+  editBtn.addEventListener('click', async () => {
+    if (!editing) {
+      editing = true;
+      editBtn.textContent = "Save Profile";
+      userNameSpan.contentEditable = "true";
+      userNameSpan.style.background = "var(--input-focus)";
+      userNameSpan.focus();
+    } else {
+      editing = false;
+      editBtn.textContent = "Edit Profile";
+      userNameSpan.contentEditable = "false";
+      userNameSpan.style.background = "";
+      if (currentUser && userNameSpan.textContent.trim() !== currentUser.displayName) {
+        try {
+          await currentUser.updateProfile({ displayName: userNameSpan.textContent.trim() });
+          alert("Profile updated!");
+        } catch(error) {
+          alert("Error updating profile: " + error.message);
+        }
+      }
+    }
+  });
+
+  logoutBtn.addEventListener('click', () => {
+    firebase.auth().signOut()
+      .then(() => window.location.href = "login.html")
+      .catch(err => alert("Logout failed: " + err.message));
+  });
+
+  function updateVisitStreak() {
+    const today = new Date();
+    const todayStr = today.toISOString().slice(0,10);
+    let lastVisit = localStorage.getItem('profileLastVisit');
+    let streak = parseInt(localStorage.getItem('profileVisitStreak')) || 0;
+    if (lastVisit === todayStr) {
+      profileStreak.textContent = `Profile Visit Streak: ${streak} day${streak > 1 ? 's' : ''} 🔥`;
+      return;
+    }
+    if (lastVisit) {
+      const lastDate = new Date(lastVisit);
+      const diffDays = Math.floor((today - lastDate)/(1000*60*60*24));
+      if (diffDays === 1) {
+        streak += 1;
+      } else {
+        streak = 1;
+      }
+    } else {
+      streak = 1;
+    }
+    localStorage.setItem('profileLastVisit', todayStr);
+    localStorage.setItem('profileVisitStreak', streak);
+    profileStreak.textContent = `Profile Visit Streak: ${streak} day${streak > 1 ? 's' : ''} 🔥`;
+  }
+</script>
+</body>
+</html>
